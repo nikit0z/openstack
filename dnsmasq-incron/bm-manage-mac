@@ -1,0 +1,17 @@
+#!/bin/bash
+
+conf=/etc/dnsmasq-bm-hosts.conf
+mac=$1
+action=$2
+mac=`echo $1 | cut -c 4- | sed 's/-/:/g'`
+
+case "$2" in
+	IN_CREATE)
+		echo $mac >> $conf
+		;;
+	IN_DELETE)
+		sed -i "/$mac/d" $conf	
+		;;
+esac
+
+/etc/init.d/dnsmasq-bm reload > /dev/null 2>&1

@@ -1,0 +1,1 @@
+/tftpboot/pxelinux.cfg IN_CREATE,IN_DELETE /usr/bin/bm-manage-mac $# $%
